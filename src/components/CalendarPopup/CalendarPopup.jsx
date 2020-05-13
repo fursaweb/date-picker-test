@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import style from './style.scss';
 
-const popup = {
-  display: 'block',
-  border: '1px solid #000'
-};
-
-const d_flex = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  flexWrap: 'wrap',
-  flex: '0 0 100%/7'
-};
-
 const monthes = [
   'January',
   'February',
@@ -28,8 +16,11 @@ const monthes = [
   'December'
 ];
 
-const getCurrentDay = () => {
+const getWeekDay = () => {
   return new Date().getDay();
+};
+const getCurrentDay = () => {
+  return new Date().getDate();
 };
 const getCurrentMonth = () => {
   return new Date().getMonth();
@@ -62,9 +53,9 @@ const CalendarPopup = () => {
 
     for (let i = 1; i <= getDaysInMonth(); i++) {
       dates.push(
-        <div className="calendar__date" key={i}>
-          {i}
-        </div>
+        i !== getCurrentDay() ? 
+        <div className="calendar__date" key={i}>{i}</div> :
+        <div className="calendar__date calendar__date--active" key={i}>{i}</div>
       );
     }
 
@@ -75,13 +66,13 @@ const CalendarPopup = () => {
     <div>
       <input type="date" />
       <button onClick={getDaysInMonth}>push</button>
-      <div className="calendar-popup" style={popup}>
-        <div className="calendar__header" style={d_flex}>
+      <div className="calendar-popup">
+        <div className="calendar__header">
           <span onClick={prevMonth}>-</span>
           <span>{monthes[month]}</span>
           <span onClick={nextMonth}>+</span>
         </div>
-        <div className="calender__week" style={d_flex}>
+        <div className="calender__week" >
           <div className="calendar__day">sun</div>
           <div className="calendar__day">mon</div>
           <div className="calendar__day">tue</div>
@@ -90,7 +81,7 @@ const CalendarPopup = () => {
           <div className="calendar__day">fri</div>
           <div className="calendar__day">sat</div>
         </div>
-        <div className="calendar__body" style={d_flex}>
+        <div className="calendar__body" >
           {renderDate().map((date) => {
             return date;
           })}

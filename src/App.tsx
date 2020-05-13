@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 
 import { theme } from 'styleguide';
+import 'style.scss'
 import Input from 'components/Input';
 import CalendarPopup from 'components/CalendarPopup';
 import Notifications from 'components/Notifications';

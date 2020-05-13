@@ -1,0 +1,37 @@
+
+.calendar-popup {
+    border: 1px solid red;
+}
+
+.calendar__header,
+.calender__week,
+.calendar__body {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex: 0 0 calc(100%/7);
+}
+
+.calendar__header {
+    justify-content: space-between;
+}
+
+.calendar__body {
+    justify-content: flex-start;
+}
+
+.calendar__day {
+    width: calc(100%/7);
+    text-align: center;
+}
+
+.calendar__date {
+    font-weight: bold;
+    width: calc(100%/7);
+
+    text-align: center;
+    
+    &--active {
+        color: red;
+    }
+}
